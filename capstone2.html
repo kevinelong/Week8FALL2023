@@ -1,0 +1,50 @@
+<body>
+    <select id="parkLocation"><option value="">Select a Location</option></select>
+    <select id="parkType"><option value="">Select a Type</option></select>
+    <div id="results">results will be here</div>
+</body>
+<script src="data.js"></script><!-- LOAD ALL THREE PIECES OF DATA FROM THE ONE FILE -->
+<script>
+
+    //LOOP THROUGH LIST OF STRINGS AND CREATE OPTIONS AND APPEND TO SELECT
+    locationData.forEach(s=>parkLocation.innerHTML += `<option>${s}</option>`);
+    typeData.forEach(s=>parkType.innerHTML += `<option>${s}</option>`);
+    
+    const showPark = p => results.innerHTML += p.name + ", " + p.location + "<br>";
+
+    function showResults(){
+        results.innerHTML = ""; //CLEAR OUT ALL OLD RESULTS
+        parkData.forEach(p =>{ //BEGIN LOOP THROUGH ALL PARKS ONE AT A TIME
+            //SHOW ONLY IF IS MATCH FOR LOCATION OR LOCATION IS BLANK, 
+            // AND 
+            //IS MATCH FOR TYPE OR TYPE IS BLANK
+            if(parkLocation.value == ""){
+                if(parkType.value == ""){
+                    showPark(p);
+                }    
+            }
+            
+            if(parkLocation.value == p.location){
+                if(p.name.includes(parkType.value)){ //OR BOTH MATCH
+                    showPark(p);
+                }    
+            }
+            
+            if(parkLocation.value == ""){
+                if(p.name.includes(parkType.value)){//OR if location is blank and type is a match
+                    showPark(p);
+                }
+            }
+            
+            if(parkType.value == ""){
+                if(parkLocation.value == p.location){ //OR if type is blank and location is a match
+                    showPark(p);
+                }
+            }
+
+        });//END LOOP
+    }
+    parkLocation.onchange = showResults;
+    parkType.onchange = showResults;
+    showResults(); //SHOW EVERYTHING BY DEFAULT
+</script>
