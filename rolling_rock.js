@@ -7,7 +7,7 @@ expected = [
 
 function roll_rock(row){
     const output=[];
-    let changed = true;
+    let changed = false;
 
     //CODE HERE
     while(!changed){
@@ -15,7 +15,7 @@ function roll_rock(row){
         //if the item to the left can move,
         //then move it to the right
         //if nothing in the loop changed then set changed to false
-
+        changed = true;
         output.push(row)
     }
 
