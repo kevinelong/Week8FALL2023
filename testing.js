@@ -1,3 +1,6 @@
+//SEE https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+//for the ... "spread" operator
+
 // LOAD NODEJS ASSERT LIBRARY
 var assert = require('assert');
 
