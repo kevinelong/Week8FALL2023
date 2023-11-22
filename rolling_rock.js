@@ -17,12 +17,7 @@ function roll_rock(row){
         //if the item to the left can move,
         //then move it to the right
         //if nothing in the loop changed then set changed to false
-        if(row[row.length-1] != 1){
-            row.pop(); //remove last
-            row.unshift(0);            
-        }else{
-            changed = false;
-        }
+
     }
 
     return output;
