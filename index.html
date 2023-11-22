@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item {
+            position: absolute;
+            left: 1vh;
+            top: 1vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="item" id="hero">@</div>
+</body>
+<script>
+
+    const delay = 10;
+    let y = 0;
+    let speed = 1;
+
+    //infinite loop on a schedule
+    function loop() {
+        hero.style.top = y + "vh";
+        y += speed;
+        if (y >= 100 || y <= 0) { //hit bottom or top
+            speed = -speed; //reverse by going negative
+        }
+        setTimeout(loop, delay);
+    }
+    loop();
+</script>
+
+</html>

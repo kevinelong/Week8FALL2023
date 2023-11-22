@@ -7,16 +7,22 @@ expected = [
 
 function roll_rock(row){
     const output=[];
-    let changed = false;
+    let changed = true;
 
     //CODE HERE
-    while(!changed){
+    while(changed){
+        output.push([...row])
+
         //loop through each, right to left
         //if the item to the left can move,
         //then move it to the right
         //if nothing in the loop changed then set changed to false
-        changed = true;
-        output.push(row)
+        if(row[row.length-1] != 1){
+            row.pop(); //remove last
+            row.unshift(0);            
+        }else{
+            changed = false;
+        }
     }
 
     return output;
